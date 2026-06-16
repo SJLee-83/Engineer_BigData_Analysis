@@ -86,10 +86,10 @@ X_train, X_val, y_train, y_val = train_test_split(X_train, y, test_size=0.2)
 # print(X_train.shape, X_val.shape, y_train.shape, y_val.shape)
 # (2091, 9) (523, 9) (2091,) (523,)
 
-from sklearn.ensemble import RandomForestClassifier
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
-y_val_pred = model.predict(X_val)
+# from sklearn.ensemble import RandomForestClassifier
+# model = RandomForestClassifier()
+# model.fit(X_train, y_train)
+# y_val_pred = model.predict(X_val)
 
 # (venv) C:\Users\great\Desktop\Engineer_BigData_Analysis\ch11>python Q2.py
 #      pred
@@ -127,12 +127,18 @@ y_val_pred = model.predict(X_val)
 
 # [903 rows x 1 columns]
 
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier(n_estimators=200)
+model.fit(X_train, y_train)
+y_val_pred = model.predict(X_val)
+
 from sklearn.metrics import f1_score
 f1 = f1_score(y_val, y_val_pred, average = 'macro')
 print(f1)
 
 # 0.7520642927381557 # RF
 # 0.7964032629515904 # GB
+# 0.7958878657977504 # RF + 트리수 증가
 
 y_pred = model.predict(X_test)
 result = pd.DataFrame(y_pred, columns=["pred"])
