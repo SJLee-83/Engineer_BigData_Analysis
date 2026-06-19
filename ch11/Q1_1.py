@@ -14,6 +14,7 @@ new_df = df.columns[1:] # Country 제외, 2001~2021까지의 컬럼명들 저장
 #       dtype='str')
 
 max_idx = df[new_df].idxmax() # 각 컬럼별 최대값의 인덱스 값 가져오기
+# print(df[new_df])
 # print(max_idx)
 
 df2 = df.loc[max_idx]
@@ -37,6 +38,6 @@ result = df.set_index('Country').max()   # 연도별 최댓값 숫자
 # 각 국가들의 처음, 마지막 열을 뽑은 다음 새로운 테이블 구성
 df["CAGR"] = (df['2021'] / df['2001']) ** (1/20) - 1
 # print(df)
-print(round(df["CAGR"].max(), 3))
+# print(round(df["CAGR"].max(), 3))
 # 0.047
 
